@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.preference.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -68,9 +69,7 @@ dependencies {
     //Navigation
     implementation(libs.androidx.navigation.compose)
 
-    //Retrofit and Picasso and Glide
-    implementation(libs.retrofit2.retrofit)
-    implementation(libs.retrofit2.converter.gson)
+    //Glide
     implementation(libs.glide)
 
     //Location
@@ -81,6 +80,18 @@ dependencies {
 
     //Hilt
     implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler) // Додаємо KAPT залежність для Hilt
-    implementation(libs.androidx.hilt.navigation.compose) // Підтримка Hilt у Compose
+    kapt(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    //Ktor
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.json)
+    implementation(libs.ktor.client.okhttp)
+    implementation(libs.ktor.client.logging)
+    implementation(libs.ktor.client.contentNegotiation)
+    implementation(libs.ktor.client.serialization)
+
+    // Map
+    implementation(libs.osmdroid.android)
+    implementation(libs.play.services.location)
 }

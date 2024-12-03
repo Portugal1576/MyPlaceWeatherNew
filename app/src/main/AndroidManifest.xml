@@ -22,10 +22,10 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCknUn9JHLySRKL5h9A81GFpPnnsqvTNeQ" />
+            android:value="21a1151891b1248d5075c4cec8fe1daa" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.MyPlaceWeatherNew">
             <intent-filter>

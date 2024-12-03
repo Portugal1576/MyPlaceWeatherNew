@@ -1,4 +1,4 @@
-package com.rubtsov.port.myplaceweathernew.ui.theme
+package com.rubtsov.port.myplaceweathernew.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
