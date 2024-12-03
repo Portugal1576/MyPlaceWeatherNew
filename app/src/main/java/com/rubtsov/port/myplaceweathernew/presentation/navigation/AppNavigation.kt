@@ -7,6 +7,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.rubtsov.port.myplaceweathernew.presentation.screens.choice.ChoiceScreenRoot
+import com.rubtsov.port.myplaceweathernew.presentation.screens.detail.DetailScreenRoot
+import com.rubtsov.port.myplaceweathernew.presentation.screens.history.HistoryScreenRoot
 import com.rubtsov.port.myplaceweathernew.presentation.screens.splash.SplashScreenRoot
 
 @Composable
@@ -31,11 +33,11 @@ fun AppNavigation(
         composable<Screen.Choice> {
             ChoiceScreenRoot(navController = navController)
         }
-//        composable<Screen.PassportBooklet> {
-//            PassportBookletScreenRoot(navController = navController)
-//        }
-//        composable<Screen.PassportCard> {
-//            PassportCardScreenRoot(navController = navController)
-//        }
+        composable<Screen.Detail> {
+            DetailScreenRoot(navController = navController)
+        }
+        composable<Screen.History> {
+            HistoryScreenRoot(navController = navController)
+        }
     }
 }

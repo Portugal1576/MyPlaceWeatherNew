@@ -13,12 +13,12 @@ import kotlinx.serialization.Serializable
         @Parcelize
         @Serializable
         data object Choice : Screen(), Parcelable
-//
-//        @Parcelize
-//        @Serializable
-//        data object PassportBooklet : Screen(), Parcelable
-//
-//        @Parcelize
-//        @Serializable
-//        data object PassportCard : Screen(), Parcelable
+
+        @Parcelize
+        @Serializable
+        data object Detail : Screen(), Parcelable
+
+        @Parcelize
+        @Serializable
+        data object History : Screen(), Parcelable
     }
