@@ -19,8 +19,6 @@ import com.rubtsov.port.myplaceweathernew.presentation.navigation.Screen
 import com.rubtsov.port.myplaceweathernew.presentation.screens.components.MapComponent
 import com.rubtsov.port.myplaceweathernew.presentation.screens.components.WeatherButton
 import com.rubtsov.port.myplaceweathernew.presentation.theme.ChoiceButtonColor
-import com.rubtsov.port.myplaceweathernew.presentation.theme.PrimaryColorLight
-import com.rubtsov.port.myplaceweathernew.presentation.theme.TrackColorLight
 
 @Composable
 fun ChoiceScreenRoot(
