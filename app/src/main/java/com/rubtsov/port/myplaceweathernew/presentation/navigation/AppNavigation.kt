@@ -3,8 +3,8 @@ package com.rubtsov.port.myplaceweathernew.presentation.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.rubtsov.port.myplaceweathernew.presentation.screens.choice.ChoiceScreenRoot
 import com.rubtsov.port.myplaceweathernew.presentation.screens.detail.DetailScreenRoot
@@ -25,18 +25,25 @@ fun AppNavigation(
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = Screen.Splash
+        startDestination = "Splash"
     ) {
-        composable<Screen.Splash> {
+        // Splash Screen
+        composable(route = "Splash") {
             SplashScreenRoot(navController = navController)
         }
-        composable<Screen.Choice> {
+
+        // Choice Screen
+        composable(route = "Choice") {
             ChoiceScreenRoot(navController = navController)
         }
-        composable<Screen.Detail> {
+
+        // Detail Screen with arguments
+        composable(route = "Detail") {
             DetailScreenRoot(navController = navController)
         }
-        composable<Screen.History> {
+
+        // History Screen
+        composable(route = "History") {
             HistoryScreenRoot(navController = navController)
         }
     }

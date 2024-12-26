@@ -65,8 +65,7 @@ fun WeatherButton(
             Image(
                 painter = painterResource(id = leftIconId),
                 contentDescription = null,
-                colorFilter = ColorFilter.tint(buttonFontColor),
-                modifier = Modifier.size(24.dp)
+                modifier = Modifier.size(40.dp)
             )
 
             Text(
@@ -100,7 +99,7 @@ fun CustomButtonPreview() {
     WeatherButton(
         onClick = { /* Preview Click Action */ },
         leftIconId = R.drawable.left_icon,
-        buttonText = "Passport Card",
+        buttonText = "Detail Weather",
         rightIconId = R.drawable.right_icon,
         primaryColor = PrimaryColorLight,
         buttonFontColor = Color.White,

@@ -1,11 +1,11 @@
-package com.rubtsov.port.myplaceweathernew.presentation.screens.splash
+package com.rubtsov.port.myplaceweathernew.presentation.screens
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
-class SplashScreenViewModel : ViewModel() {
+class MainViewModel : ViewModel() {
     var lat by mutableDoubleStateOf(41.0993)
         private set
 

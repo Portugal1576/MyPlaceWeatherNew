@@ -25,9 +25,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.rubtsov.port.myplaceweathernew.R
-import com.rubtsov.port.myplaceweathernew.presentation.screens.splash.SplashScreenViewModel
+import com.rubtsov.port.myplaceweathernew.presentation.screens.MainViewModel
 import com.rubtsov.port.myplaceweathernew.presentation.theme.BlueStroke
-import com.rubtsov.port.myplaceweathernew.utils.convertToDMS
 import org.osmdroid.config.Configuration
 import org.osmdroid.events.MapEventsReceiver
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
@@ -41,7 +40,7 @@ import org.osmdroid.views.overlay.Marker
 @Composable
 fun MapComponent(
     modifier: Modifier = Modifier,
-    viewModel: SplashScreenViewModel = viewModel()
+    viewModel: MainViewModel = viewModel()
 ) {
     val lat = viewModel.lat
     val lng = viewModel.lng
@@ -61,7 +60,7 @@ fun MapComponent(
                 .padding(8.dp),
             contentAlignment = Alignment.Center
         ) {
-            DisplayCoordinates(lat = lat, lng = lng)
+            DisplayCoordinates(lat = lat, lng = lng, color = Color.White, 14.sp)
         }
 
         Box(
@@ -168,31 +167,6 @@ fun MapCard(
     }
 }
 
-@Composable
-fun DisplayCoordinates(lat: Double, lng: Double) {
-    val (latDMS, lngDMS) = convertToDMS(lat, lng)
-    val locationString = "$latDMS $lngDMS"
-
-    Text(
-        text = "Ваші координати: $locationString",
-        style = TextStyle(
-            fontSize = 14.sp,
-            color = Color.White
-        )
-    )
-}
-
-@Composable
-fun SelectCityText() {
-    Text(
-        text = "Виберіть місто на мапі",
-        style = TextStyle(
-            fontSize = 16.sp,
-            color = Color.White
-        )
-    )
-}
-
 @Preview(showBackground = true)
 @Composable
 fun PreviewMapComponentWithBlueBox() {
@@ -214,7 +188,7 @@ fun PreviewMapComponentWithBlueBox() {
                 .padding(8.dp),
             contentAlignment = Alignment.Center
         ) {
-            DisplayCoordinates(lat = previewLat, lng = previewLng)
+            DisplayCoordinates(lat = previewLat, lng = previewLng, color = Color.White, 14.sp)
         }
 
         Box(

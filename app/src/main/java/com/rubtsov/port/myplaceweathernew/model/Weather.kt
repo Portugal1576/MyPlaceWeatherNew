@@ -1,7 +1,6 @@
 package com.rubtsov.port.myplaceweathernew.model
 
 data class Weather(
-    val alerts: List<Alert>,
     val current: Current,
     val daily: List<Daily>,
     val hourly: List<Hourly>,

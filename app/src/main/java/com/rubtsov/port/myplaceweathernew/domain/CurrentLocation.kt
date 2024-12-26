@@ -1,4 +1,4 @@
-package com.rubtsov.port.myplaceweathernew.utils
+package com.rubtsov.port.myplaceweathernew.domain
 
 import android.annotation.SuppressLint
 import android.content.Context

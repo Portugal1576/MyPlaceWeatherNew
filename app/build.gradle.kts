@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.kapt)
 }
 
@@ -21,6 +20,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField(type = "String", name = "OPENWEATHERMAP_API_KEY", value = "\"2aeea086812c6b26cf1c40c61b73c5c8\"")
     }
 
     buildTypes {
@@ -41,6 +41,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     kapt {
         correctErrorTypes = true
@@ -78,20 +79,17 @@ dependencies {
     // Serialization between screens
     implementation(libs.serialization.json)
 
-    //Hilt
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
-    implementation(libs.androidx.hilt.navigation.compose)
+// Coil для завантаження зображень
+    implementation(libs.coil.compose)
 
-    //Ktor
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.json)
-    implementation(libs.ktor.client.okhttp)
-    implementation(libs.ktor.client.logging)
-    implementation(libs.ktor.client.contentNegotiation)
-    implementation(libs.ktor.client.serialization)
-
+    // Koin
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
     // Map
     implementation(libs.osmdroid.android)
     implementation(libs.play.services.location)
+
+    //Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 }

@@ -15,7 +15,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.rubtsov.port.myplaceweathernew.R
-import com.rubtsov.port.myplaceweathernew.presentation.navigation.Screen
 import com.rubtsov.port.myplaceweathernew.presentation.screens.components.MapComponent
 import com.rubtsov.port.myplaceweathernew.presentation.screens.components.WeatherButton
 import com.rubtsov.port.myplaceweathernew.presentation.theme.ChoiceButtonColor
@@ -26,30 +25,18 @@ fun ChoiceScreenRoot(
 ) {
     val context = LocalContext.current
     val activity = context as? Activity
-//
-//    val isOnline by isInternetAvailableState()
 
     ChoiceScreen(
-//        isOnline = isOnline,
-//        state = state,
-//        events = viewModel.eventsFlow,
-//        onAction = viewModel::onAction,
-        navigate = { destinationScreen ->
-            navController.navigate(destinationScreen)
+        navigate = { route ->
+            navController.navigate(route)
         },
-        finishActivity = {
-            activity?.finish()
-        }
+        finishActivity = { activity?.finish() }
     )
 }
 
 @Composable
 fun ChoiceScreen(
-//    isOnline: Boolean,
-//    state: StartScreenState,
-//    events: Flow<StartScreenEvent>,
-//    onAction: (StartScreenAction) -> Unit,
-    navigate: (destinationScreen: Screen) -> Unit,
+    navigate: (route: String) -> Unit,
     finishActivity: () -> Unit
 ) {
     BackHandler {
@@ -62,15 +49,14 @@ fun ChoiceScreen(
             .windowInsetsPadding(WindowInsets.navigationBars)
     ) {
         MapComponent(
-            modifier = Modifier
-                .weight(1f)
+            modifier = Modifier.weight(1f)
         )
 
         WeatherButton(
             onClick = {
-                navigate(Screen.Detail)
+                navigate("Detail")
             },
-            leftIconId = R.drawable.left_icon,
+            leftIconId = R.drawable.icon_weather,
             buttonText = "Weather Detail",
             rightIconId = R.drawable.right_icon,
             primaryColor = ChoiceButtonColor,
