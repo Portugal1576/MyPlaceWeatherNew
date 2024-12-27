@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.rubtsov.port.myplaceweathernew.R
-import com.rubtsov.port.myplaceweathernew.presentation.screens.MainViewModel
+import com.rubtsov.port.myplaceweathernew.presentation.screens.choice.ChoiceScreenViewModel
 import com.rubtsov.port.myplaceweathernew.presentation.theme.BlueStroke
 import org.osmdroid.config.Configuration
 import org.osmdroid.events.MapEventsReceiver
@@ -40,7 +40,7 @@ import org.osmdroid.views.overlay.Marker
 @Composable
 fun MapComponent(
     modifier: Modifier = Modifier,
-    viewModel: MainViewModel = viewModel()
+    viewModel: ChoiceScreenViewModel = viewModel()
 ) {
     val lat = viewModel.lat
     val lng = viewModel.lng

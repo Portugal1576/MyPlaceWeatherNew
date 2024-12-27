@@ -1,4 +1,4 @@
-package com.rubtsov.port.myplaceweathernew.presentation.screens.choice
+package com.rubtsov.port.myplaceweathernew.presentation.screens.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

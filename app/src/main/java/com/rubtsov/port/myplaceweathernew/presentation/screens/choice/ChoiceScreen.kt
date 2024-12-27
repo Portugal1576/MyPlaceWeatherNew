@@ -13,22 +13,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.rubtsov.port.myplaceweathernew.R
+import com.rubtsov.port.myplaceweathernew.model.Coordinates
+import com.rubtsov.port.myplaceweathernew.presentation.navigation.Screen
 import com.rubtsov.port.myplaceweathernew.presentation.screens.components.MapComponent
 import com.rubtsov.port.myplaceweathernew.presentation.screens.components.WeatherButton
 import com.rubtsov.port.myplaceweathernew.presentation.theme.ChoiceButtonColor
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ChoiceScreenRoot(
-    navController: NavController,
+    navController: NavHostController,
 ) {
     val context = LocalContext.current
     val activity = context as? Activity
 
     ChoiceScreen(
-        navigate = { route ->
-            navController.navigate(route)
+        navigate = { destinationScreen ->
+            navController.navigate(destinationScreen)
         },
         finishActivity = { activity?.finish() }
     )
@@ -36,9 +39,12 @@ fun ChoiceScreenRoot(
 
 @Composable
 fun ChoiceScreen(
-    navigate: (route: String) -> Unit,
+    navigate: (destinationScreen: Screen) -> Unit,
     finishActivity: () -> Unit
 ) {
+    val viewModel: ChoiceScreenViewModel = koinViewModel()
+    val coordinates = Coordinates(viewModel.lat, viewModel.lng)
+
     BackHandler {
         finishActivity()
     }
@@ -54,7 +60,7 @@ fun ChoiceScreen(
 
         WeatherButton(
             onClick = {
-                navigate("Detail")
+                navigate(Screen.Detail(coordinates))
             },
             leftIconId = R.drawable.icon_weather,
             buttonText = "Weather Detail",

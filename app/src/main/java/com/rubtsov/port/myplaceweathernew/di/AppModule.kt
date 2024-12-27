@@ -4,8 +4,8 @@ import com.rubtsov.port.myplaceweathernew.data.api.ApiService
 import com.rubtsov.port.myplaceweathernew.data.api.RetrofitInstance
 import com.rubtsov.port.myplaceweathernew.data.api.WeatherRepository
 import com.rubtsov.port.myplaceweathernew.model.Coordinates
-import com.rubtsov.port.myplaceweathernew.presentation.screens.choice.WeatherViewModel
-import com.rubtsov.port.myplaceweathernew.presentation.screens.MainViewModel
+import com.rubtsov.port.myplaceweathernew.presentation.screens.choice.ChoiceScreenViewModel
+import com.rubtsov.port.myplaceweathernew.presentation.screens.detail.WeatherViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -27,5 +27,5 @@ val appModule = module {
     }
 
     // SplashScreenViewModel
-    viewModel { MainViewModel() }
+    viewModel { ChoiceScreenViewModel() }
 }

@@ -1,4 +1,4 @@
-package com.rubtsov.port.myplaceweathernew.presentation.screens.choice
+package com.rubtsov.port.myplaceweathernew.presentation.screens.detail
 
 import com.rubtsov.port.myplaceweathernew.model.Weather
 

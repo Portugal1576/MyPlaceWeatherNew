@@ -14,29 +14,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.rubtsov.port.myplaceweathernew.R
+import com.rubtsov.port.myplaceweathernew.presentation.navigation.Screen
 import com.rubtsov.port.myplaceweathernew.presentation.screens.components.ProgressIndicator
 import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreenRoot(
-    navController: NavController
+    navController: NavHostController
 ) {
     SplashScreen(
-        navigate = { route ->
-            navController.navigate(route)
+        navigate = { destinationScreen ->
+            navController.navigate(destinationScreen)
         }
     )
 }
 
 @Composable
 fun SplashScreen(
-    navigate: (route: String) -> Unit,
+    navigate: (destinationScreen: Screen) -> Unit
 ) {
     LaunchedEffect(Unit) {
         delay(2000)
-        navigate("Choice")
+        navigate(Screen.Choice)
     }
 
     Box(
