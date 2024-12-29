@@ -6,10 +6,10 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
 class ChoiceScreenViewModel : ViewModel() {
-    var lat by mutableDoubleStateOf(41.0993)
+    var lat by mutableDoubleStateOf(41.141802)
         private set
 
-    var lng by mutableDoubleStateOf(-7.8035)
+    var lng by mutableDoubleStateOf(-7.884147)
         private set
 
     fun updateLocation(newLat: Double, newLng: Double) {

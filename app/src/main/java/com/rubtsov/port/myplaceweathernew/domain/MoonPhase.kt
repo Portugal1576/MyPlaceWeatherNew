@@ -2,14 +2,14 @@ package com.rubtsov.port.myplaceweathernew.domain
 
 fun getMoonPhaseText(phase: Double): String {
     return when {
-        phase < 0.02 || phase > 0.98 -> "New Moon"
-        phase < 0.25 -> "Waxing Crescent"
-        phase < 0.27 -> "First Quarter"
-        phase < 0.48 -> "Waxing Gibbous"
-        phase < 0.52 -> "Full Moon"
-        phase < 0.73 -> "Waning Gibbous"
-        phase < 0.75 -> "Last Quarter"
-        phase < 0.98 -> "Waning Crescent"
-        else -> "New Moon"
+        phase < 0.1 -> "Новий Місяць"
+        phase < 0.25 -> "Зростаючий Місяць"
+        phase < 0.35 -> "Перша чверть"
+        phase < 0.48 -> "При зростанні"
+        phase < 0.52 -> "Повний Місяць"
+        phase < 0.65 -> "Після повні"
+        phase < 0.75 -> "Остання чверть"
+        phase < 0.9 -> "Старіючий Місяць"
+        else -> "Новий Місяць"
     }
 }

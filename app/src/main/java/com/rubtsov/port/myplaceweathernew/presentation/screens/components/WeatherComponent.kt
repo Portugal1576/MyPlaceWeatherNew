@@ -27,7 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -49,24 +49,26 @@ import java.util.Locale
 @Composable
 fun WeatherContent(weather: Weather) {
     val current = weather.current
+
     val date = remember(current.dt) {
         SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault()).format(Date(current.dt * 1000L))
     }
-    val pressure = weather.current.pressure
-    val moonPhase = weather.daily.firstOrNull()?.moon_phase ?: 0.0
-    val moonPhaseText = getMoonPhaseText(moonPhase)
+    val pressure = current.pressure
+
+    val moonPhaseValue = weather.daily.firstOrNull()?.moon_phase ?: 0.0
+    val moonPhaseText = getMoonPhaseText(moonPhaseValue)
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(vertical = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Date: $date",
+            text = "${stringResource(R.string.date)}:  $date",
             fontFamily = FontFamily(
                 Font(R.font.inter_bold, weight = FontWeight.Thin)
             ),
@@ -78,10 +80,10 @@ fun WeatherContent(weather: Weather) {
         Card(
             border = BorderStroke(width = 1.dp, Color.Gray),
             colors = CardDefaults.cardColors(containerColor = Color.Transparent),
-            shape = RoundedCornerShape(size = 4.dp),
+            shape = RoundedCornerShape(size = 8.dp),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 6.dp, horizontal = 12.dp)
+                .padding(vertical = 6.dp)
         ) {
             Column(
                 modifier = Modifier.padding(10.dp)
@@ -90,9 +92,10 @@ fun WeatherContent(weather: Weather) {
                     modifier = Modifier
                         .height(IntrinsicSize.Min)
                 ) {
+
                     Column {
                         Text(
-                            text = "Температура: ",
+                            text = "${stringResource(R.string.temp)}: ",
                             fontFamily = FontFamily(
                                 Font(R.font.inter_bold, weight = FontWeight.Thin)
                             ),
@@ -101,7 +104,25 @@ fun WeatherContent(weather: Weather) {
                         Spacer(modifier = Modifier.height(8.dp))
 
                         Text(
-                            text = "Вологість: ",
+                            text = "${stringResource(R.string.humidity)}: ",
+                            fontFamily = FontFamily(
+                                Font(R.font.inter_bold, weight = FontWeight.Thin)
+                            ),
+                            fontWeight = FontWeight.Bold
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        Text(
+                            text = "${stringResource(R.string.wind_speed)}: ",
+                            fontFamily = FontFamily(
+                                Font(R.font.inter_bold, weight = FontWeight.Thin)
+                            ),
+                            fontWeight = FontWeight.Bold
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        Text(
+                            text = "${stringResource(R.string.pressure)}:",
                             fontFamily = FontFamily(
                                 Font(R.font.inter_bold, weight = FontWeight.Thin)
                             ),
@@ -111,17 +132,7 @@ fun WeatherContent(weather: Weather) {
                         Spacer(modifier = Modifier.height(8.dp))
 
                         Text(
-                            text = "Швидкість вітру: ",
-                            fontFamily = FontFamily(
-                                Font(R.font.inter_bold, weight = FontWeight.Thin)
-                            ),
-                            fontWeight = FontWeight.Bold
-                        )
-
-                        Spacer(modifier = Modifier.height(8.dp))
-
-                        Text(
-                            text = "Тиск:",
+                            text = "${stringResource(R.string.moon_phase)}:",
                             fontFamily = FontFamily(
                                 Font(R.font.inter_bold, weight = FontWeight.Thin)
                             ),
@@ -179,6 +190,16 @@ fun WeatherContent(weather: Weather) {
                             ),
                             fontWeight = FontWeight.Bold
                         )
+
+                        Spacer(modifier = Modifier.height(8.dp))
+
+                        Text(
+                            text = moonPhaseText,
+                            fontFamily = FontFamily(
+                                Font(R.font.roboto_thin, weight = FontWeight.Thin)
+                            ),
+                            fontWeight = FontWeight.Bold
+                        )
                     }
                 }
 
@@ -186,13 +207,13 @@ fun WeatherContent(weather: Weather) {
 
                 Row(
                     modifier = Modifier
-                        .padding(8.dp)
                         .fillMaxWidth()
+                        .padding(horizontal = 25.dp)
+                        .padding(vertical = 8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .weight(1f)
-                    ) {
+                    Box {
                         current.weather.firstOrNull()?.icon?.let { iconCode ->
                             val iconUrl = "https://openweathermap.org/img/wn/${iconCode}@2x.png"
                             Image(
@@ -206,31 +227,9 @@ fun WeatherContent(weather: Weather) {
                             )
                         }
                     }
-                    Box(
-                        modifier = Modifier
-                            .weight(1f)
-                    ) {
-                        Image(
-                            painter = painterResource(R.drawable.m_3),
-                            contentDescription = "",
-                            modifier = Modifier
-                                .size(80.dp)
-                                .clip(RoundedCornerShape(8.dp)),
-                            contentScale = ContentScale.Crop
-                        )
-                    }
-                    Box(
-                        modifier = Modifier
-                            .weight(1f)
-                    ) {
-                        Image(
-                            painter = painterResource(R.drawable.m_3),
-                            contentDescription = "",
-                            modifier = Modifier
-                                .size(80.dp)
-                                .clip(RoundedCornerShape(8.dp)),
-                            contentScale = ContentScale.Crop
-                        )
+
+                    Box {
+                        WindDirection(current.wind_deg)
                     }
                 }
             }
@@ -279,7 +278,6 @@ fun WeatherScreenPreview() {
                 moonset = 1672561200,
                 pop = 0.0,
                 pressure = 1015,
-                rain = null,
                 summary = "Sunny",
                 sunrise = 1672508400,
                 sunset = 1672546800,
@@ -297,7 +295,8 @@ fun WeatherScreenPreview() {
                 ),
                 wind_deg = 100,
                 wind_gust = 10.0,
-                wind_speed = 6.0
+                wind_speed = 6.0,
+                rain = null
             )
         ),
         hourly = emptyList(),
@@ -310,4 +309,3 @@ fun WeatherScreenPreview() {
 
     WeatherContent(weather = mockWeather)
 }
-

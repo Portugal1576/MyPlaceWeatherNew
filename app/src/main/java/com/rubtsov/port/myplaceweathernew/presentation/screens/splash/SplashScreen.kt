@@ -9,15 +9,15 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.rubtsov.port.myplaceweathernew.R
+import com.rubtsov.port.myplaceweathernew.domain.getSeasonImageResource
 import com.rubtsov.port.myplaceweathernew.presentation.navigation.Screen
-import com.rubtsov.port.myplaceweathernew.presentation.screens.components.ProgressIndicator
 import kotlinx.coroutines.delay
 
 @Composable
@@ -35,8 +35,10 @@ fun SplashScreenRoot(
 fun SplashScreen(
     navigate: (destinationScreen: Screen) -> Unit
 ) {
+    val seasonImage = remember { getSeasonImageResource() }
+
     LaunchedEffect(Unit) {
-        delay(2000)
+        delay(1500)
         navigate(Screen.Choice)
     }
 
@@ -47,17 +49,16 @@ fun SplashScreen(
             .padding(vertical = 8.dp)
     ) {
         Image(
-            painter = painterResource(id = R.drawable.autumn_portrait),
+            painter = painterResource(id = seasonImage),
             contentDescription = null,
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds
         )
-
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            ProgressIndicator()
-        }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewSplashScreen() {
+    SplashScreen(navigate = {})
 }
