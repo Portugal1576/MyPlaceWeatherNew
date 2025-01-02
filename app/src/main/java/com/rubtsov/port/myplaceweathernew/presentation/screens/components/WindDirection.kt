@@ -17,15 +17,12 @@ import androidx.compose.ui.unit.dp
 import com.rubtsov.port.myplaceweathernew.R
 
 @Composable
-fun WindDirection(degree: Int) {
+fun WindDirection(degree: Int, modifier: Modifier = Modifier) {
 
     val rotationAngle = remember(degree) { degree.toFloat() }
 
     Box(
-        modifier = Modifier
-            .padding(end = 10.dp)
-            .size(80.dp)
-            .clip(RoundedCornerShape(8.dp)),
+        modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
 

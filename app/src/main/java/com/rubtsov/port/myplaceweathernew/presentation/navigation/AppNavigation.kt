@@ -15,7 +15,6 @@ import com.rubtsov.port.myplaceweathernew.model.Coordinates
 import com.rubtsov.port.myplaceweathernew.presentation.screens.choice.ChoiceScreenRoot
 import com.rubtsov.port.myplaceweathernew.presentation.screens.detail.DetailScreenRoot
 import com.rubtsov.port.myplaceweathernew.presentation.screens.history.HistoryScreenRoot
-import com.rubtsov.port.myplaceweathernew.presentation.screens.splash.SplashScreenRoot
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import kotlin.reflect.typeOf
@@ -34,13 +33,8 @@ fun AppNavigation(
     NavHost(
         modifier = modifier,
         navController = navController,
-        startDestination = Screen.Splash
+        startDestination = Screen.Choice
     ) {
-        // Splash Screen
-        composable<Screen.Splash> {
-            SplashScreenRoot(navController = navController)
-        }
-
         // Choice Screen
         composable<Screen.Choice> {
             ChoiceScreenRoot(navController = navController)

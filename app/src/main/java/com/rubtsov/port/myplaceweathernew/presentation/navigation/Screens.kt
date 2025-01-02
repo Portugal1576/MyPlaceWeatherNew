@@ -8,10 +8,6 @@ import kotlinx.serialization.Serializable
 sealed class Screen {
     @Parcelize
     @Serializable
-    data object Splash : Screen(), Parcelable
-
-    @Parcelize
-    @Serializable
     data object Choice : Screen(), Parcelable
 
     @Parcelize

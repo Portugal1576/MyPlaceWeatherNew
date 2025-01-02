@@ -1,16 +1,22 @@
 package com.rubtsov.port.myplaceweathernew.presentation.screens.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,6 +36,8 @@ fun DailyForecastItem(daily: Daily) {
     val moonPhase = getMoonPhaseText(daily.moon_phase)
 
     Card(
+        border = BorderStroke(width = 1.dp, Color.Red),
+        shape = RoundedCornerShape(size = 8.dp),
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 6.dp)
@@ -63,7 +71,13 @@ fun DailyForecastItem(daily: Daily) {
                 )
             }
 
-            WindDirection(degree = daily.wind_deg)
+            WindDirection(
+                degree = daily.wind_deg,
+                Modifier
+                    .padding(end = 10.dp)
+                    .size(80.dp)
+                    .clip(RoundedCornerShape(8.dp))
+            )
         }
     }
 }

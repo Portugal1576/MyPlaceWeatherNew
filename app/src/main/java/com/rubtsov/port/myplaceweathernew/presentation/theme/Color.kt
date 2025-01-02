@@ -3,6 +3,7 @@ package com.rubtsov.port.myplaceweathernew.presentation.theme
 import androidx.compose.ui.graphics.Color
 
 val BlueStroke = Color(0xFF1A23AA)
+val BlueLight = Color(0xFF989DEF)
 
 val DialogColorLight = Color(0xFF80C4BE)
 val PrimaryColorLight = Color(0xFF652A17)
