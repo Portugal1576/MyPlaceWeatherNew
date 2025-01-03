@@ -1,5 +1,6 @@
 package com.rubtsov.port.myplaceweathernew.presentation.screens.detail
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rubtsov.port.myplaceweathernew.data.api.WeatherRepository
@@ -28,6 +29,7 @@ class WeatherViewModel(
             _viewState.value = WeatherViewState.Loading
             try {
                 val response = repository.getWeather(coordinates.lat, coordinates.lon, appId)
+                Log.d("MyLog", "API Key: $appId")
                 if (response.isSuccessful) {
                     response.body()?.let {
                         _viewState.value = WeatherViewState.Success(it)

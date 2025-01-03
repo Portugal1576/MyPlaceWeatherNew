@@ -1,5 +1,6 @@
 package com.rubtsov.port.myplaceweathernew.di
 
+import com.rubtsov.port.myplaceweathernew.BuildConfig
 import com.rubtsov.port.myplaceweathernew.data.api.ApiService
 import com.rubtsov.port.myplaceweathernew.data.api.RetrofitInstance
 import com.rubtsov.port.myplaceweathernew.data.api.WeatherRepository
@@ -21,7 +22,7 @@ val appModule = module {
     viewModel { (coordinates: Coordinates) ->
         WeatherViewModel(
             repository = get(),
-            appId = getProperty("OPENWEATHERMAP_API_KEY"),
+            appId = BuildConfig.OPENWEATHERMAP_API_KEY,
             coordinates = coordinates
         )
     }

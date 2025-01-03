@@ -12,12 +12,6 @@ class MainApplication : Application() {
         startKoin {
             androidContext(this@MainApplication)
             modules(appModule)
-            // Передаємо властивості, такі як API ключ
-            properties(
-                mapOf(
-                    "OPENWEATHERMAP_API_KEY" to BuildConfig.OPENWEATHERMAP_API_KEY
-                )
-            )
         }
     }
 }
