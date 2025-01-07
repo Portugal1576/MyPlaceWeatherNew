@@ -211,7 +211,8 @@ fun WeatherContent(hourly: Hourly, modifier: Modifier = Modifier) {
                         Modifier
                             .padding(end = 10.dp)
                             .size(80.dp)
-                            .clip(RoundedCornerShape(8.dp))
+                            .clip(RoundedCornerShape(8.dp)),
+                        80
                     )
                 }
             }
